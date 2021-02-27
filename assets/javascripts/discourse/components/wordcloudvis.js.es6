@@ -23,17 +23,13 @@ export default Ember.Component.extend({
   },
 
   setup() {
-    // var $data = $(this.words.slice(0, 10)).map((key, objects) => {
-    //   return { text: objects.text, size: objects.size, test: "haha" };
-    // });
-
     var _this = this;
 
     this.ensureD3().then(() => {
 
       var layout = d3.layout
         .cloud()
-        .size([740, 740])
+        .size([1100, 1100])
         .words(
           _this.words
         )
