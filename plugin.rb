@@ -10,8 +10,6 @@ enabled_site_setting :word_cloud_enabled
 
 register_asset 'stylesheets/common.scss'
 
-Discourse.top_menu_items.push(:word_cloud)
-
 after_initialize do
   %w(
     ../lib/engine.rb
