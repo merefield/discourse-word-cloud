@@ -1,7 +1,7 @@
 module Jobs
     # frozen_string_literal: true
     class WordCloudCalc < ::Jobs::Scheduled
-      every 1.minutes
+      every 5.minutes
   
       def execute(args={})
         
@@ -23,7 +23,7 @@ module Jobs
           ORDER BY count(*) desc
           LIMIT #{SiteSetting.word_cloud_set_size}
         SQL
-        
+
         result = build.query
 
         result.each do |w|
