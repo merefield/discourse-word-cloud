@@ -1,7 +1,7 @@
 module Jobs
     # frozen_string_literal: true
     class WordCloudCalc < ::Jobs::Scheduled
-      every 5.minutes
+      every 20.minutes
   
       def execute(args={})
         
