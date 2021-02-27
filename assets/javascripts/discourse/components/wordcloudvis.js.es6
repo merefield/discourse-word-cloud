@@ -1,12 +1,4 @@
-import DatePicker from "discourse/components/date-picker";
-import {
-  default as discourseComputed,
-  observes,
-  on,
-} from "discourse-common/utils/decorators";
 import loadScript from "discourse/lib/load-script";
-import { next } from "@ember/runloop";
-import I18n from "I18n";
 
 export default Ember.Component.extend({
   classNames: "word-cloud-vis",
