@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
       var layout = d3.layout
         .cloud()
-        .size([1100, 1100])
+        .size([1100, 550])
         .words(
           _this.words
         )
@@ -56,6 +56,9 @@ export default Ember.Component.extend({
           .append("text")
           .style("font-size", function (d) {
             return d.size + "px";
+          })
+          .style("fill", function () {
+            return "hsl(" + Math.random() * 360 + ",40%,40%)";
           })
           .style("font-family", "Impact")
           .attr("text-anchor", "middle")
