@@ -31,7 +31,7 @@ module Jobs
         result = build.query
 
         result.each do |w|
-          unless (ignore_list_set).include?(w.word)
+          unless (ignore_list_set).include?(w.word.downcase)
             word_cloud_list << {word: w.word, count: w.count}
           end
           if word_cloud_list.count >= SiteSetting.word_cloud_set_size then
