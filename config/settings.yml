@@ -10,12 +10,11 @@ plugins:
     client: false
   word_cloud_minimum_length:
     default: 3
+    max: 10
+    min: 0
     client: false
-  word_cloud_exclude_symbols:
-    type: bool
-    default: true
-    client: false
-  word_cloud_include_mentions:
-    type: bool
-    default: false
+  word_cloud_ignore_portion:
+    default: 200
+    max: 200
+    min: 0
     client: false

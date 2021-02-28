@@ -23,7 +23,7 @@ export default Ember.Component.extend({
         .cloud()
         .size([1100, 550])
         .words(
-          _this.words
+          _this.words.slice(10,_this.words.length)
         )
         .padding(5)
         .rotate(function () {
