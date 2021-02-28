@@ -1,7 +1,7 @@
 # name: discourse-word-cloud
 # about: Builds and displays a word cloud on your forum
 # email contacts: robert@thepavilion.io
-# version: 0.1
+# version: 0.2
 # authors: Robert Barrow
 # url: https://github.com/merefield/discourse-word-cloud
 
