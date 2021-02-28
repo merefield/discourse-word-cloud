@@ -1,5 +1,12 @@
+class Object
+  def is_number?
+    to_f.to_s == to_s || to_i.to_s == to_s
+  end
+end
+
 module Jobs
     # frozen_string_literal: true
+
     class WordCloudCalc < ::Jobs::Scheduled
       every 30.minutes
   
@@ -31,8 +38,9 @@ module Jobs
         result = build.query
 
         result.each do |w|
-          unless (ignore_list_set).include?(w.word.downcase)
-            word_cloud_list << {word: w.word, count: w.count}
+          test_word = w.word.downcase.gsub(/(\W|\d)/, "")
+          unless (ignore_list_set).include?(test_word) || test_word.is_number?
+            word_cloud_list << {word: test_word, count: w.count}
           end
           if word_cloud_list.count >= SiteSetting.word_cloud_set_size then
             break
