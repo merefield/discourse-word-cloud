@@ -38,9 +38,10 @@ module Jobs
         result = build.query
 
         result.each do |w|
-          test_word = w.word.downcase.gsub(/(\W|\d)/, "")
-          unless (ignore_list_set).include?(test_word) || test_word.is_number?
-            word_cloud_list << {word: test_word, count: w.count}
+          downcase_word = w.word.downcase
+          no_symbol_word = downcase_word.gsub(/(\W|\d)/, "")
+          unless no_symbol_word.blank? || (ignore_list_set).include?(no_symbol_word) || no_symbol_word.is_number? || no_symbol_word != downcase_word
+            word_cloud_list << {word: no_symbol_word, count: w.count}
           end
           if word_cloud_list.count >= SiteSetting.word_cloud_set_size then
             break
