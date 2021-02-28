@@ -14,7 +14,7 @@ plugins:
     min: 0
     client: false
   word_cloud_ignore_portion:
-    default: 200
-    max: 200
+    default: 100
+    max: 100
     min: 0
     client: false
