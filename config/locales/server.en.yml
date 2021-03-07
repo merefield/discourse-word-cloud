@@ -2,7 +2,7 @@ en:
   word_cloud_ignore_list: "the|be|to|of|and|a|in|that|have|i|it|for|not|on|with|he|as|you|do|at|this|but|his|by|from|they|we|say|her|she|or|an|will|my|one|all|would|there|their|what|so|up|out|if|about|who|get|which|go|me|when|make|can|like|time|no|just|him|know|take|people|into|year|your|good|some|could|them|see|other|than|then|now|look|only|come|its|over|think|also|back|after|use|two|how|our|work|first|well|way|even|new|want|because|any|these|give|day|most|us"
   site_settings:
     word_cloud_enabled: "Enable the Word Cloud plugin"
-    word_cloud_source_categories: "The Categories from which words can be extracted (blank system will source them from ALL Posts including those in PMs)"
+    word_cloud_source_categories: "The Categories from which words and their counts will be extracted (if blank, system will include words from ALL Posts including those in PMs)"
     word_cloud_minimum_length: "Minimum length of words considered"
     word_cloud_set_size: "Size of word list"
     word_cloud_ignore_portion: "Amount of words ignored using the ignore list (see https://en.wikipedia.org/wiki/Most_common_words_in_English) (max 100 - entire list ignored, min 0 - no words ignored from that list)"
