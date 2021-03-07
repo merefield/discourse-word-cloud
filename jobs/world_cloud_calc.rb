@@ -8,7 +8,7 @@ module Jobs
     # frozen_string_literal: true
 
     class WordCloudCalc < ::Jobs::Scheduled
-      every 30.minutes
+      every 1.minutes
   
       def execute(args={})
 
@@ -29,10 +29,7 @@ module Jobs
                       regexp_replace(raw, E'[\\n\\r\\u2028]+', ' ', 'g')
                         , '\(http[^\)]*\)', ' ', 'g')
                           , '[^\-a-zA-Z\s]+', '', 'g')
-                          , '--+', '', 'g') AS word
-                FROM Posts
-                LIMIT 2
-              SQL
+                          , '--+', '', 'g'), ' ') AS word
             FROM posts
             order by id desc
             limit 100000
@@ -47,9 +44,8 @@ module Jobs
 
         result.each do |w|
           downcase_word = w.word.downcase
-          no_symbol_word = downcase_word.gsub(/(\W|\d)/, "")
-          unless no_symbol_word.blank? || (ignore_list_set).include?(no_symbol_word) || no_symbol_word.is_number? || no_symbol_word != downcase_word
-            word_cloud_list << {word: no_symbol_word, count: w.count}
+          unless downcase_word.blank? || (ignore_list_set).include?(downcase_word)
+            word_cloud_list << {word: downcase_word, count: w.count}
           end
           if word_cloud_list.count >= SiteSetting.word_cloud_set_size then
             break
