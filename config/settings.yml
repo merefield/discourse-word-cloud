@@ -3,6 +3,10 @@ plugins:
     type: bool
     default: true
     client: true
+  word_cloud_source_categories:
+    default: ''
+    type: category_list
+    client: false
   word_cloud_set_size:
     default: 300
     max: 1000
