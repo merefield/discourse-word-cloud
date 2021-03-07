@@ -21,7 +21,7 @@ export default Ember.Component.extend({
 
       var layout = d3.layout
         .cloud()
-        .size([1100, 550])
+        .size([1120, 560])
         .words(
           _this.words.slice(10,_this.words.length)
         )
