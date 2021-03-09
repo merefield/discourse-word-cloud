@@ -12,6 +12,7 @@ export default DiscourseRoute.extend({
           words: result.word_count.map((w) => {
             return Ember.Object.create({
               text: w.word,
+              href: `/search?q=${w.word}`,
               size: w.count,
             });
           }),

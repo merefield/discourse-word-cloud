@@ -1,4 +1,5 @@
 import loadScript from "discourse/lib/load-script";
+import DiscourseURL from "discourse/lib/url";
 
 export default Ember.Component.extend({
   classNames: "word-cloud-vis",
@@ -34,6 +35,7 @@ export default Ember.Component.extend({
           return d.size;
         })
         .on("end", draw);
+
       layout.start();
 
       function draw(words) {
@@ -64,6 +66,29 @@ export default Ember.Component.extend({
           .attr("text-anchor", "middle")
           .attr("transform", function (d) {
             return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+          })
+          .on("mouseover", function(d,i) {
+            let newFontSize = parseInt(d3.select(this).style("font-size"))*1.1 + "px";
+            d3.select(this).transition()
+            .duration(100)
+            .style("cursor", "pointer")
+            .style("font-size", newFontSize)
+            .style("fill", function() {
+              return d3.rgb(d3.select(this).style("fill")).darker(-0.7);
+          });
+          })
+          .on("mouseout", function(d,i) {
+            let newFontSize = parseInt(d3.select(this).style("font-size"))/1.1 + "px";
+            d3.select(this).transition()
+            .duration(100)
+            .style("cursor", "default")
+            .style("font-size", newFontSize)
+            .style("fill", function() {
+              return d3.rgb(d3.select(this).style("fill")).darker(0.7);
+          });
+          })
+          .on('click', function(d, i) {
+            if (d.target.__data__.href) { DiscourseURL.routeTo(d.target.__data__.href); }
           })
           .text(function (d) {
             return d.text;
