@@ -28,10 +28,12 @@ module Jobs
                 regexp_replace(
                   regexp_replace(
                     regexp_replace(
-                      regexp_replace(raw, E'[\\n\\r\\u2028]+', ' ', 'g')
-                        , '\(http[^\)]*\)', ' ', 'g')
-                          , '[^\-a-zA-Z\s]+', '', 'g')
-                          , '--+', '', 'g'), ' ') AS word
+                      regexp_replace(
+                        regexp_replace(raw, '\[quote.*\/quote\]', '', 'g')
+                        , E'[\\n\\r\\u2028]+', ' ', 'g')
+                          , '\(http[^\)]*\)', ' ', 'g')
+                            , '[^\-a-zA-Z\s]+', '', 'g')
+                            , '--+', '', 'g'), ' ') AS word
             FROM posts
             order by id desc
             limit 100000
@@ -46,11 +48,13 @@ module Jobs
             SELECT word as word, count(*) as count
             FROM ( 
               SELECT 
-                regexp_split_to_table(
+              regexp_split_to_table(
+                regexp_replace(
                   regexp_replace(
                     regexp_replace(
                       regexp_replace(
-                        regexp_replace(raw, E'[\\n\\r\\u2028]+', ' ', 'g')
+                        regexp_replace(raw, '\[quote.*\/quote\]', '', 'g')
+                        , E'[\\n\\r\\u2028]+', ' ', 'g')
                           , '\(http[^\)]*\)', ' ', 'g')
                             , '[^\-a-zA-Z\s]+', '', 'g')
                             , '--+', '', 'g'), ' ') AS word
