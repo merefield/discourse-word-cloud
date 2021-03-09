@@ -29,7 +29,7 @@ module Jobs
                   regexp_replace(
                     regexp_replace(
                       regexp_replace(
-                        regexp_replace(raw, '\[quote.*\/quote\]', '', 'g')
+                        regexp_replace(raw, '\[quote=[^\/]*\/quote\]', '', 'g')
                         , E'[\\n\\r\\u2028]+', ' ', 'g')
                           , '\(http[^\)]*\)', ' ', 'g')
                             , '[^\-a-zA-Z\s]+', '', 'g')
@@ -53,7 +53,7 @@ module Jobs
                   regexp_replace(
                     regexp_replace(
                       regexp_replace(
-                        regexp_replace(raw, '\[quote.*\/quote\]', '', 'g')
+                        regexp_replace(raw, '\[quote=[^\/]*\/quote\]', '', 'g')
                         , E'[\\n\\r\\u2028]+', ' ', 'g')
                           , '\(http[^\)]*\)', ' ', 'g')
                             , '[^\-a-zA-Z\s]+', '', 'g')
