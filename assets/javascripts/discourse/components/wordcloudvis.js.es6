@@ -12,7 +12,9 @@ export default Ember.Component.extend({
   },
 
   didInsertElement() {
-    this.setup();
+    if (!this.site.mobileView) {
+      this.setup();
+    }
   },
 
   setup() {
