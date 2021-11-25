@@ -15,7 +15,7 @@ export default {
     withPluginApi('0.8.13', api => {
 
       api.decorateWidget("hamburger-menu:generalLinks", function(helper) {
-        return {href: "/wordcloud", rawLabel: "Word Cloud"}
+        return {href: "/wordcloud", rawLabel: I18n.t('word_cloud.hamburger_menu_label')}
       });
 
     });
