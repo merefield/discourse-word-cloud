@@ -1,4 +1,4 @@
 en:
   js:
-    user_network_vis:
-      hamburger_menu_label: "User Network"
+    word_cloud:
+      hamburger_menu_label: "Word Cloud"
