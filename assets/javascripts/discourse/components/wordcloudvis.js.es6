@@ -43,8 +43,7 @@ export default Ember.Component.extend({
       function draw(words) {
         d3.select('.word-cloud-vis')
           .append("svg")
-          .attr("width", layout.size()[0])
-          .attr("height", layout.size()[1])
+          .attr("viewBox", `0 0 ${layout.size()[0]} ${layout.size()[1]}`)
           .append("g")
           .attr(
             "transform",
