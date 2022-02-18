@@ -36,7 +36,7 @@ export default Ember.Component.extend({
 
       var layout = d3.layout
         .cloud()
-        .size([1120, 560])
+        .size([this.siteSettings.word_cloud_width, this.siteSettings.word_cloud_height])
         .words(
           _this.words
         )

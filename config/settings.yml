@@ -17,3 +17,9 @@ plugins:
     max: 10
     min: 0
     client: false
+  word_cloud_width:
+    default: 1120
+    client: true
+  word_cloud_height:
+    default: 560
+    client: true

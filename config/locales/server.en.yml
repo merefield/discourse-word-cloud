@@ -6,3 +6,5 @@ en:
     word_cloud_minimum_length: "Minimum length of words considered"
     word_cloud_set_size: "Size of word list"
     word_cloud_ignore_portion: "Amount of words ignored using the ignore list (see https://www.lakeshorelearning.com/assets/media/images/pdfs/SightWord_List_1-300.pdf) (max 300 - entire list ignored, min 0 - no words ignored from that list)"
+    word_cloud_width: "Width of Word Cloud"
+    word_cloud_height: "Height of Word Cloud"
