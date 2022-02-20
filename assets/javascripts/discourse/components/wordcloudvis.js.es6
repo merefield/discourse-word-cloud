@@ -1,12 +1,14 @@
 import loadScript from "discourse/lib/load-script";
 import DiscourseURL from "discourse/lib/url";
 import { notEmpty } from "@ember/object/computed";
+// import { computed } from '@ember/object';
 import { observes } from 'discourse-common/utils/decorators';
 
 export default Ember.Component.extend({
   classNames: "word-cloud-vis",
   words: Ember.computed.alias("model.words"),
   hasItems: notEmpty("words"),
+  elementIsReady: null,
 
   ensureD3() {
     return loadScript("/plugins/discourse-word-cloud/d3/d3.min.js").then(() => {
@@ -15,16 +17,12 @@ export default Ember.Component.extend({
   },
 
   didInsertElement() {
-    if (!this.site.mobileView) {
-      this.waitForData()
-    }
+    this.set("elementIsReady", true);
   },
 
-  @observes("hasItems")
-  waitForData() {
-    if(!this.hasItems) {
-      return;
-    } else {
+  @observes('hasItems', 'elementIsReady')
+  waitForDataAndElement () {
+    if(this.hasItems && this.elementIsReady) {
       this.setup();
     }
   },
