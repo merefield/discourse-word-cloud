@@ -9,6 +9,7 @@ export default Component.extend({
   words: alias("model.words"),
   hasItems: notEmpty("words"),
   elementIsReady: null,
+  runOnce: false,
 
   ensureD3() {
     return loadScript("/plugins/discourse-word-cloud/d3/d3.min.js").then(() => {
@@ -22,8 +23,9 @@ export default Component.extend({
 
   @observes('hasItems', 'elementIsReady')
   waitForDataAndElement () {
-    if(this.hasItems && this.elementIsReady) {
+    if(this.hasItems && this.elementIsReady && !this.runOnce) {
       this.setup();
+      this.runOnce = true;
     }
   },
 
