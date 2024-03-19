@@ -12,12 +12,16 @@ export default {
 
     if (!siteSettings.word_cloud_enabled || !currentUser || isMobileDevice) return;
 
-    withPluginApi('0.8.13', api => {
+    withPluginApi('0.8.40', api => {
 
-      api.decorateWidget("hamburger-menu:generalLinks", function(helper) {
-        return {href: "/wordcloud", rawLabel: I18n.t('word_cloud.hamburger_menu_label')}
-      });
-
+      if (siteSettings.word_cloud_add_menu_item) {
+        api.addCommunitySectionLink({
+          name: "word cloud",
+          route: "wordcloud",
+          title: I18n.t("word_cloud.sidebar_menu_label"),
+          text: I18n.t("word_cloud.sidebar_menu_label"),
+        });
+      }
     });
   }
 };

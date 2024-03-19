@@ -1,12 +1,12 @@
 import loadScript from "discourse/lib/load-script";
 import DiscourseURL from "discourse/lib/url";
-import { notEmpty } from "@ember/object/computed";
-// import { computed } from '@ember/object';
+import { notEmpty, alias } from "@ember/object/computed";
 import { observes } from 'discourse-common/utils/decorators';
+import Component from "@ember/component";
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: "word-cloud-vis",
-  words: Ember.computed.alias("model.words"),
+  words: alias("model.words"),
   hasItems: notEmpty("words"),
   elementIsReady: null,
 
