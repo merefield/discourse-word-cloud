@@ -1,22 +1,19 @@
-import DiscourseRoute from "discourse/routes/discourse";
-import { popupAjaxError } from "discourse/lib/ajax-error";
 import { ajax } from "discourse/lib/ajax";
-import EmberObject from "@ember/object";
+import { popupAjaxError } from "discourse/lib/ajax-error";
+import DiscourseRoute from "discourse/routes/discourse";
 
-export default DiscourseRoute.extend({
+export default class WordcloudRoute extends DiscourseRoute {
   model() {
     return ajax("/wordcloud.json")
-      .then((result) => {
-        return EmberObject.create({
-          words: result.word_count.map((w) => {
-            return EmberObject.create({
-              text: w.word,
-              href: `/search?q=${w.word}`,
-              size: w.count,
-            });
-          }),
-        });
-      })
+      .then((result) => ({
+        words: result.word_count.map((word) => {
+          return {
+            text: word.word,
+            href: `/search?q=${word.word}`,
+            size: word.count,
+          };
+        }),
+      }))
       .catch(popupAjaxError);
-  },
-});
+  }
+}

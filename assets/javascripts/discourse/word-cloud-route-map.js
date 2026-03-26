@@ -1,3 +1,3 @@
 export default function () {
-    this.route('wordcloud', { path: '/wordcloud'});
-};
+  this.route("wordcloud");
+}
